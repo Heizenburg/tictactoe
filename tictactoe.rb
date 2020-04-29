@@ -52,7 +52,9 @@ class TicTacToe
       puts "#{current_player.name}, where would you like to go? [1-#{board.size ** 2}]"
       location = gets.chomp.to_i
 
-      if board.available?(location)
+      if !location.between?(1, 9)
+        puts "Choose a valid number between 1 and 9"
+      elsif board.available?(location)
         board.set(location, current_player)
         break
       else
